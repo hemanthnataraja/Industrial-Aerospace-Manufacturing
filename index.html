@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hemanth Nataraja — Industrial Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ===================== 1. CENTRALIZED THEME — edit only here ===================== */
+:root{
+  --dark-gray:#6A6863;
+  --orange:#DF5327;
+  --cream-gold:#F5D08A;
+  --pale-yellow:#EFD991;
+  --off-white:#F0EEEC;
+  --white:#FFFFFF;
+  --dark-charcoal:#3F3D39;
+  /* derived tints — do not hardcode new colors elsewhere, derive from the 7 above */
+  --line-light: color-mix(in srgb, var(--dark-gray) 45%, var(--off-white));
+  --line-dark:  color-mix(in srgb, var(--white) 22%, var(--dark-charcoal));
+  --ph-bg-light: color-mix(in srgb, var(--dark-gray) 14%, var(--off-white));
+  --ph-bg-dark:  color-mix(in srgb, var(--white) 10%, var(--dark-charcoal));
+  --serif:'Fraunces',serif; --sans:'Inter',sans-serif; --mono:'IBM Plex Mono',monospace;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;background:var(--off-white);color:var(--dark-charcoal);font-family:var(--sans);line-height:1.55;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:1060px;margin:0 auto;padding:0 28px;}
+a{color:inherit;text-decoration:none;}
+.mono{font-family:var(--mono);letter-spacing:.03em;}
+h1,h2,h3{font-family:var(--serif);font-weight:600;margin:0 0 .3em;letter-spacing:-.01em;}
+h2{font-size:clamp(28px,4vw,44px);}
+p{opacity:.78;max-width:58ch;}
+strong,.bold{font-weight:700;}
+section{padding:100px 0;}
+.dark{background:var(--dark-charcoal);color:var(--white);}
+.dark p{opacity:.72;}
+.neutral{background:var(--white);}
+.eyebrow{font-size:12px;letter-spacing:.06em;opacity:.55;margin-bottom:14px;text-transform:uppercase;}
+.company-link{font-weight:700;border-bottom:1px solid transparent;}
+.company-link:hover{color:var(--orange);border-color:var(--orange);}
+
+header{position:fixed;top:0;left:0;right:0;z-index:60;padding:20px 28px;display:flex;justify-content:space-between;align-items:center;transition:.3s;background:color-mix(in srgb, var(--dark-charcoal) 20%, transparent);backdrop-filter:blur(6px);}
+header.scrolled{background:color-mix(in srgb, var(--dark-charcoal) 88%, transparent);padding:13px 28px;}
+.brand{font-family:var(--serif);font-size:19px;color:var(--white);}
+nav.desktop{display:none;gap:28px;font-size:14px;color:var(--white);}
+nav.desktop a{opacity:.7;padding-bottom:3px;}
+nav.desktop a.active{opacity:1;border-bottom:1px solid var(--orange);color:var(--cream-gold);}
+@media(min-width:860px){nav.desktop{display:flex;}}
+.menu-btn{background:none;border:none;font-size:22px;cursor:pointer;color:var(--white);}
+@media(min-width:860px){.menu-btn{display:none;}}
+#mobileMenu{position:fixed;inset:0;background:var(--dark-charcoal);color:var(--white);z-index:70;display:none;flex-direction:column;justify-content:center;gap:26px;padding:40px;}
+#mobileMenu.open{display:flex;}
+#mobileMenu a{font-family:var(--serif);font-size:32px;}
+.closeBtn{position:absolute;top:24px;right:28px;background:none;border:none;color:var(--white);font-size:22px;}
+
+/* HERO */
+#home{min-height:100svh;display:flex;align-items:flex-end;position:relative;color:var(--white);background:
+  linear-gradient(180deg, color-mix(in srgb, var(--dark-charcoal) 55%, transparent), color-mix(in srgb, var(--dark-charcoal) 94%, transparent) 80%),
+  repeating-linear-gradient(115deg, color-mix(in srgb, var(--dark-gray) 60%, var(--dark-charcoal)) 0 40px, var(--dark-charcoal) 40px 80px);
+  padding-bottom:60px;overflow:hidden;}
+.hero-bg-note{position:absolute;top:26px;left:28px;font-size:11px;opacity:.5;}
+.hero-portrait{position:absolute;right:6%;bottom:0;width:280px;max-width:38vw;aspect-ratio:3/4;background:var(--ph-bg-dark);border-top:2px solid var(--orange);display:flex;align-items:flex-end;justify-content:center;padding:14px;font-size:11px;opacity:.6;text-align:center;}
+.hero-inner{position:relative;z-index:2;max-width:1060px;margin:0 auto;padding:0 28px;width:100%;}
+.hero-eyebrow{font-size:13px;opacity:.65;margin-bottom:18px;}
+.hero-title{font-size:clamp(56px,10vw,110px);line-height:.92;margin:0;}
+.hero-role{font-family:var(--sans);font-weight:500;font-size:18px;color:var(--cream-gold);margin:14px 0 20px;}
+.hero-line{font-size:17px;opacity:.85;max-width:44ch;margin-bottom:36px;}
+.hero-panel{border-top:1px solid var(--line-dark);padding-top:16px;display:flex;flex-wrap:wrap;gap:28px;font-size:13px;max-width:620px;}
+.hero-panel div span{display:block;opacity:.55;font-size:11px;margin-bottom:3px;}
+.hero-panel a:hover{color:var(--orange);}
+.cta-row{display:flex;flex-wrap:wrap;gap:14px;margin:30px 0 36px;}
+.cta{border:1px solid var(--line-dark);padding:14px 20px;font-size:14px;display:inline-flex;gap:10px;transition:.2s;color:var(--white);}
+.cta:hover{border-color:var(--orange);color:var(--orange);}
+.cta.primary{background:var(--white);color:var(--dark-charcoal);border-color:var(--white);}
+.cta.primary:hover{background:var(--orange);border-color:var(--orange);color:var(--white);}
+
+/* EDUCATION */
+.edu-row{display:grid;gap:40px;margin-top:40px;}
+@media(min-width:760px){.edu-row{grid-template-columns:1fr 1fr;}}
+.edu-card{border-top:1px solid var(--line-light);padding-top:18px;}
+.edu-photo{aspect-ratio:16/10;background:var(--ph-bg-light);border:1px dashed var(--line-light);display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--dark-gray);margin-top:14px;}
+.foundation{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px;font-size:12px;color:var(--dark-gray);}
+.foundation span{border:1px solid var(--line-light);padding:6px 12px;}
+
+/* EXPERIENCE TIMELINE */
+.timeline-nav{display:flex;flex-direction:column;gap:0;margin:40px 0 70px;border-left:2px solid var(--line-light);}
+.tl-item{position:relative;padding:18px 0 18px 26px;cursor:pointer;}
+.tl-item::before{content:'';position:absolute;left:-7px;top:24px;width:12px;height:12px;border-radius:50%;background:var(--off-white);border:2px solid var(--dark-gray);}
+.tl-item.active::before{background:var(--orange);border-color:var(--orange);}
+.tl-year{font-size:12px;opacity:.55;}
+.tl-company{font-size:20px;font-weight:700;}
+.tl-item.active .tl-company{color:var(--orange);}
+.tl-role{font-size:13px;opacity:.7;}
+
+.company-block{padding:70px 0;border-top:1px solid var(--line-light);}
+.company-header{margin-bottom:36px;}
+.company-header .name{font-size:clamp(26px,4vw,38px);font-weight:700;}
+.company-header .meta{font-size:13px;opacity:.6;margin-top:6px;}
+
+.subnav{display:flex;gap:26px;font-size:12px;text-transform:uppercase;letter-spacing:.05em;border-bottom:1px solid var(--line-light);padding-bottom:14px;margin-bottom:36px;opacity:.75;}
+.subnav a.active{color:var(--orange);opacity:1;}
+
+/* 4 panels + 3 photos */
+.detail-layout{display:grid;gap:36px;}
+@media(min-width:900px){.detail-layout{grid-template-columns:1.2fr 1fr;}}
+.panels4{display:grid;gap:14px;}
+@media(min-width:560px){.panels4{grid-template-columns:1fr 1fr;}}
+.panel{border:1px solid var(--line-light);padding:20px;}
+.panel .n{font-size:11px;opacity:.5;margin-bottom:6px;}
+.panel h4{font-family:var(--sans);font-weight:700;font-size:15px;margin:0 0 2px;}
+.panel .sub{font-size:12px;color:var(--orange);margin-bottom:8px;}
+.panel p{font-size:13px;margin:0;opacity:.75;}
+.photos3{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:auto auto;gap:10px;}
+.photos3 .p-main{grid-column:1/3;aspect-ratio:16/9;}
+.ph{background:var(--ph-bg-light);border:1px dashed var(--line-light);color:var(--dark-gray);font-size:12px;display:flex;align-items:center;justify-content:center;padding:16px;text-align:center;}
+.dark .ph{background:var(--ph-bg-dark);border-color:var(--line-dark);color:color-mix(in srgb, var(--white) 60%, transparent);}
+
+/* 3x3 grid */
+.grid9-head{margin-top:70px;margin-bottom:30px;}
+.grid9{display:grid;gap:1px;background:var(--line-light);border:1px solid var(--line-light);}
+@media(min-width:700px){.grid9{grid-template-columns:repeat(3,1fr);}}
+@media(max-width:699px){.grid9{grid-template-columns:repeat(2,1fr);}}
+.g9-box{background:var(--off-white);padding:22px 18px;}
+.g9-box .n{font-size:11px;color:var(--orange);margin-bottom:6px;}
+.g9-box h5{font-family:var(--sans);font-weight:700;font-size:14px;margin:0 0 6px;}
+.g9-box p{font-size:12.5px;margin:0;opacity:.72;}
+
+/* CASE STUDIES dark */
+#casestudies .cs-block{padding:70px 0;border-top:1px solid var(--line-dark);}
+#casestudies .cs-block:first-of-type{border-top:none;padding-top:20px;}
+.cs-num{font-size:12px;opacity:.5;margin-bottom:12px;}
+.cs-metric{font-family:var(--serif);font-size:56px;color:var(--orange);margin:16px 0 6px;}
+.cs-grid{display:grid;gap:32px;}
+@media(min-width:760px){.cs-grid.split{grid-template-columns:1fr 1fr;align-items:center;}}
+.stations{display:flex;gap:6px;overflow-x:auto;margin:20px 0;}
+.station{flex:none;border:1px solid var(--line-dark);padding:10px 14px;font-size:12px;min-width:100px;text-align:center;}
+.flow-lite{display:flex;flex-wrap:wrap;gap:10px;align-items:center;font-size:13px;margin-top:18px;opacity:.85;}
+.flow-lite span.arrow{opacity:.4;}
+
+/* PROJECTS */
+.proj-feature{display:grid;gap:26px;margin-top:36px;}
+@media(min-width:760px){.proj-feature{grid-template-columns:1.2fr 1fr;align-items:center;}}
+.proj-feature .ph{aspect-ratio:16/10;}
+.proj-small{display:grid;gap:24px;margin-top:60px;}
+@media(min-width:640px){.proj-small{grid-template-columns:1fr 1fr;}}
+.proj-card .ph{aspect-ratio:4/3;margin-bottom:14px;}
+.view-link{font-size:13px;color:var(--orange);border-bottom:1px solid var(--orange);padding-bottom:2px;}
+
+/* CERTIFICATIONS */
+.cert-row{display:grid;gap:30px;padding:40px 0;border-top:1px solid var(--line-light);align-items:center;}
+@media(min-width:760px){.cert-row{grid-template-columns:1fr 1.3fr;}
+  .cert-row.flip{grid-template-columns:1.3fr 1fr;}
+  .cert-row.flip .cert-media{order:2;}
+  .cert-row.flip .cert-body{order:1;}
+}
+.cert-media{position:relative;cursor:pointer;aspect-ratio:4/3;overflow:hidden;border:1px solid var(--line-light);}
+.cert-media .ph{width:100%;height:100%;aspect-ratio:auto;transition:transform .35s ease;}
+.cert-media:hover .ph{transform:scale(1.04);border-color:var(--orange);}
+.cert-media::after{content:'VIEW CERTIFICATE';position:absolute;bottom:10px;left:10px;font-family:var(--mono);font-size:10px;background:color-mix(in srgb, var(--dark-charcoal) 75%, transparent);color:var(--white);padding:5px 9px;opacity:0;transition:.2s;}
+.cert-media:hover::after{opacity:1;}
+.cert-media.zoomed{position:fixed;inset:8vh 10vw;z-index:80;aspect-ratio:auto;box-shadow:0 20px 60px rgba(0,0,0,.35);}
+.cert-media.zoomed .ph{transform:none;}
+.cert-name{font-size:22px;font-weight:600;}
+.cert-org{font-weight:700;margin-top:4px;}
+.cert-year{font-size:12px;color:var(--dark-gray);margin-top:2px;}
+.cert-desc{font-size:14px;margin-top:14px;}
+.cert-links{margin-top:14px;font-size:12px;display:flex;gap:18px;color:var(--dark-gray);}
+.cert-links a:hover{color:var(--orange);}
+
+/* SKILLS */
+.capmap{display:grid;gap:16px;margin-top:34px;}
+@media(min-width:640px){.capmap{grid-template-columns:repeat(3,1fr);}}
+.cap-cluster h4{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--orange);margin-bottom:10px;}
+.cap-cluster ul{list-style:none;margin:0;padding:0;display:grid;gap:6px;}
+.cap-cluster li{font-size:14px;cursor:pointer;padding-bottom:6px;border-bottom:1px dotted var(--line-light);}
+.cap-cluster li:hover{color:var(--orange);}
+.cap-detail{margin-top:22px;border-left:2px solid var(--orange);padding:6px 18px;font-size:14px;display:none;background:color-mix(in srgb, var(--pale-yellow) 35%, transparent);}
+.cap-detail.show{display:block;}
+.cap-detail .k{font-size:11px;text-transform:uppercase;color:var(--orange);margin-bottom:4px;}
+
+/* HOW I WORK */
+.howiwork{display:flex;overflow-x:auto;gap:0;margin-top:40px;}
+.hiw-step{flex:1;min-width:150px;padding:22px 18px;border-right:1px solid var(--line-light);}
+.hiw-step:last-child{border-right:none;}
+.hiw-step .n{font-size:11px;opacity:.5;margin-bottom:8px;}
+.hiw-step h4{font-family:var(--sans);font-weight:700;font-size:15px;margin:0;}
+
+/* ABOUT */
+.about-grid{display:flex;flex-direction:column;gap:30px;margin-top:30px;}
+@media(min-width:700px){.about-grid{flex-direction:row;align-items:center;}}
+.about-photo{width:100%;max-width:240px;aspect-ratio:1;flex:none;}
+
+footer{padding:50px 0;font-size:13px;}
+.footer-grid{display:flex;flex-direction:column;gap:16px;}
+@media(min-width:640px){.footer-grid{flex-direction:row;justify-content:space-between;align-items:flex-end;}}
+.status{color:var(--orange);}
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="brand">HEMANTH NATARAJA</div>
+  <nav class="desktop" id="desktopNav">
+    <a href="#casestudies" data-sec="casestudies">Work</a>
+    <a href="#about" data-sec="about">About</a>
+    <a href="#experience" data-sec="experience">Experience</a>
+    <a href="#projects" data-sec="projects">Projects</a>
+    <a href="#certifications" data-sec="certifications">Certifications</a>
+    <a href="#skills" data-sec="skills">Skills</a>
+    <a href="#contact" data-sec="contact">Contact</a>
+  </nav>
+  <button class="menu-btn" id="openMenu">☰</button>
+</header>
+
+<div id="mobileMenu">
+  <button class="closeBtn" id="closeMenu">✕</button>
+  <a href="#home">Home</a>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#certifications">Certifications</a>
+  <a href="#skills">Skills</a>
+  <a href="#about">About</a>
+  <a href="#contact">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-bg-note mono">[ADD AEROSPACE / MANUFACTURING BACKGROUND PHOTO]</div>
+  <div class="hero-portrait">[ADD HEMANTH NATARAJA PHOTO]</div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow mono">INDUSTRIAL ENGINEER · WICHITA, KS</div>
+    <h1 class="hero-title">Hemanth Nataraja</h1>
+    <div class="hero-role">Engineering better ways to build, move, and improve.</div>
+    <p class="hero-line">Aerospace manufacturing · Process improvement · Productivity, capacity, and workforce planning.</p>
+    <div class="cta-row">
+      <a class="cta primary" href="#casestudies">Explore my engineering work →</a>
+      <a class="cta" href="[ADD RESUME PDF LINK]" target="_blank" rel="noopener">View resume ↗</a>
+    </div>
+    <div class="hero-panel mono">
+      <div><span>LOCATION</span>⌖ Wichita, KS</div>
+      <div><span>EMAIL</span><a href="mailto:[EMAIL]">[ADD EMAIL]</a></div>
+      <div><span>LINKEDIN</span><a href="[LINKEDIN URL]" target="_blank" rel="noopener">[ADD LINKEDIN]</a></div>
+      <div><span>PHONE</span><a href="tel:[PHONE]">[ADD PHONE]</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="wrap">
+    <div class="eyebrow">Foundation</div>
+    <h2>Education</h2>
+    <div class="edu-row">
+      <div class="edu-card">
+        <div class="mono" style="font-size:12px;color:var(--orange);">MASTER'S DEGREE</div>
+        <h3>[ADD DEGREE]</h3>
+        <p><a class="company-link" href="[OFFICIAL WEBSITE LINK]" target="_blank" rel="noopener">[ADD UNIVERSITY] ↗</a> · [ADD YEAR]</p>
+        <div class="edu-photo">[ADD UNIVERSITY / GRADUATION PHOTO]</div>
+      </div>
+      <div class="edu-card">
+        <div class="mono" style="font-size:12px;color:var(--orange);">UNDERGRADUATE ENGINEERING</div>
+        <h3>[ADD DEGREE]</h3>
+        <p><a class="company-link" href="[OFFICIAL WEBSITE LINK]" target="_blank" rel="noopener">[ADD UNIVERSITY] ↗</a> · [ADD YEAR]</p>
+        <div class="edu-photo">[ADD UNIVERSITY / CAMPUS PHOTO]</div>
+      </div>
+    </div>
+    <div class="foundation mono">
+      <span>ENGINEERING FOUNDATION</span><span>MANUFACTURING SYSTEMS</span><span>PROCESS ANALYSIS</span><span>CONTINUOUS IMPROVEMENT</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" class="neutral">
+  <div class="wrap">
+    <div class="eyebrow">Where I've worked</div>
+    <h2>Career Timeline</h2>
+
+    <div class="timeline-nav" id="timelineNav">
+      <div class="tl-item active" data-goto="co-spirit"><div class="tl-year mono">[YEAR]</div><div class="tl-company">SPIRIT AEROSYSTEMS</div><div class="tl-role">Industrial Engineer</div></div>
+      <div class="tl-item" data-goto="co-niar"><div class="tl-year mono">[YEAR]</div><div class="tl-company">NIAR</div><div class="tl-role">[ADD NIAR ROLE]</div></div>
+      <div class="tl-item" data-goto="co-axiscades"><div class="tl-year mono">[YEAR]</div><div class="tl-company">AXISCADES</div><div class="tl-role">[ADD AXISCADES ROLE]</div></div>
+    </div>
+
+    <!-- ============ SPIRIT AEROSYSTEMS ============ -->
+    <div class="company-block" id="co-spirit">
+      <div class="company-header">
+        <div class="mono" style="font-size:11px;opacity:.5;">COMPANY 01</div>
+        <div class="name"><a class="company-link" href="[OFFICIAL WEBSITE LINK]" target="_blank" rel="noopener">SPIRIT AEROSYSTEMS ↗</a></div>
+        <div class="meta mono">INDUSTRIAL ENGINEER · WICHITA, KS · [ADD YEARS]</div>
+      </div>
+      <div class="subnav mono">
+        <a href="#co-spirit" class="active">Overview</a><a href="#co-spirit-work">My Work</a><a href="#co-spirit-impact">Contributions</a>
+      </div>
+      <p>Labor productivity, workforce planning, capacity analysis, line balancing, workflow optimization and RCCA across aerospace fastener kit and production processes.</p>
+
+      <div class="detail-layout" id="co-spirit-work" style="margin-top:44px;">
+        <div class="panels4">
+          <div class="panel"><div class="n mono">01</div><h4>[WORK AREA]</h4><div class="sub">[SUBHEADING]</div><p>[DESCRIPTION]</p></div>
+          <div class="panel"><div class="n mono">02</div><h4>[WORK AREA]</h4><div class="sub">[SUBHEADING]</div><p>[DESCRIPTION]</p></div>
+          <div class="panel"><div class="n mono">03</div><h4>[WORK AREA]</h4><div class="sub">[SUBHEADING]</div><p>[DESCRIPTION]</p></div>
+          <div class="panel"><div class="n mono">04</div><h4>[WORK AREA]</h4><div class="sub">[SUBHEADING]</div><p>[DESCRIPTION]</p></div>
+        </div>
+        <div class="photos3">
+          <div class="ph p-main">[ADD PRIMARY SPIRIT PHOTO]</div>
+          <div class="ph" style="aspect-ratio:1;">[ADD PHOTO]</div>
+          <div class="ph" style="aspect-ratio:1;">[ADD PHOTO]</div>
+        </div>
+      </div>
+
+      <div class="grid9-head" id="co-spirit-impact">
+        <h3>[MAIN HEADING]</h3>
+        <p>[SUBHEADING / EXPLANATION]</p>
+      </div>
+      <div class="grid9 mono">
+        <div class="g9-box"><div class="n">01</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+        <div class="g9-box"><div class="n">02</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+        <div class="g9-box"><div class="n">03</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+        <div class="g9-box"><div class="n">04</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+        <div class="g9-box"><div class="n">05</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+        <div class="g9-box"><div class="n">06</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+        <div class="g9-box"><div class="n">07</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+        <div class="g9-box"><div class="n">08</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+        <div class="g9-box"><div class="n">09</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+      </div>
+    </div>
+
+    <!-- ============ NIAR ============ -->
+    <div class="company-block" id="co-niar">
+      <div class="company-header">
+        <div class="mono" style="font-size:11px;opacity:.5;">COMPANY 02</div>
+        <div class="name"><a class="company-link" href="[OFFICIAL WEBSITE LINK]" target="_blank" rel="noopener">NATIONAL INSTITUTE FOR AVIATION RESEARCH (NIAR) ↗</a></div>
+        <div class="meta mono">[ADD NIAR ROLE] · [ADD NIAR DATES]</div>
+      </div>
+      <div class="subnav mono">
+        <a href="#co-niar" class="active">Overview</a><a href="#co-niar-work">My Work</a><a href="#co-niar-impact">Contributions</a>
+      </div>
+      <p>[ADD NIAR RESPONSIBILITIES]</p>
+
+      <div class="detail-layout" id="co-niar-work" style="margin-top:44px;">
+        <div class="panels4">
+          <div class="panel"><div class="n mono">01</div><h4>[WORK AREA]</h4><div class="sub">[SUBHEADING]</div><p>[DESCRIPTION]</p></div>
+          <div class="panel"><div class="n mono">02</div><h4>[WORK AREA]</h4><div class="sub">[SUBHEADING]</div><p>[DESCRIPTION]</p></div>
+          <div class="panel"><div class="n mono">03</div><h4>[WORK AREA]</h4><div class="sub">[SUBHEADING]</div><p>[DESCRIPTION]</p></div>
+          <div class="panel"><div class="n mono">04</div><h4>[WORK AREA]</h4><div class="sub">[SUBHEADING]</div><p>[DESCRIPTION]</p></div>
+        </div>
+        <div class="photos3">
+          <div class="ph p-main">[ADD PRIMARY NIAR PHOTO]</div>
+          <div class="ph" style="aspect-ratio:1;">[ADD PHOTO]</div>
+          <div class="ph" style="aspect-ratio:1;">[ADD PHOTO]</div>
+        </div>
+      </div>
+
+      <div class="grid9-head" id="co-niar-impact">
+        <h3>[MAIN HEADING]</h3>
+        <p>[SUBHEADING / EXPLANATION]</p>
+      </div>
+      <div class="grid9 mono">
+        <div class="g9-box"><div class="n">01</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+        <div class="g9-box"><div class="n">02</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+        <div class="g9-box"><div class="n">03</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+        <div class="g9-box"><div class="n">04</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+        <div class="g9-box"><div class="n">05</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+        <div class="g9-box"><div class="n">06</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+        <div class="g9-box"><div class="n">07</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+        <div class="g9-box"><div class="n">08</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+        <div class="g9-box"><div class="n">09</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+      </div>
+    </div>
+
+    <!-- ============ AXISCADES ============ -->
+    <div class="company-block" id="co-axiscades" style="border-bottom:1px solid var(--line-light);">
+      <div class="company-header">
+        <div class="mono" style="font-size:11px;opacity:.5;">COMPANY 03</div>
+        <div class="name"><a class="company-link" href="[OFFICIAL WEBSITE LINK]" target="_blank" rel="noopener">AXISCADES ↗</a></div>
+        <div class="meta mono">[ADD AXISCADES ROLE] · [ADD AXISCADES DATES]</div>
+      </div>
+      <div class="subnav mono">
+        <a href="#co-axiscades" class="active">Overview</a><a href="#co-axiscades-work">My Work</a><a href="#co-axiscades-impact">Contributions</a>
+      </div>
+      <p>[ADD AXISCADES RESPONSIBILITIES]</p>
+
+      <div class="detail-layout" id="co-axiscades-work" style="margin-top:44px;">
+        <div class="panels4">
+          <div class="panel"><div class="n mono">01</div><h4>[WORK AREA]</h4><div class="sub">[SUBHEADING]</div><p>[DESCRIPTION]</p></div>
+          <div class="panel"><div class="n mono">02</div><h4>[WORK AREA]</h4><div class="sub">[SUBHEADING]</div><p>[DESCRIPTION]</p></div>
+          <div class="panel"><div class="n mono">03</div><h4>[WORK AREA]</h4><div class="sub">[SUBHEADING]</div><p>[DESCRIPTION]</p></div>
+          <div class="panel"><div class="n mono">04</div><h4>[WORK AREA]</h4><div class="sub">[SUBHEADING]</div><p>[DESCRIPTION]</p></div>
+        </div>
+        <div class="photos3">
+          <div class="ph p-main">[ADD PRIMARY AXISCADES PHOTO]</div>
+          <div class="ph" style="aspect-ratio:1;">[ADD PHOTO]</div>
+          <div class="ph" style="aspect-ratio:1;">[ADD PHOTO]</div>
+        </div>
+      </div>
+
+      <div class="grid9-head" id="co-axiscades-impact">
+        <h3>[MAIN HEADING]</h3>
+        <p>[SUBHEADING / EXPLANATION]</p>
+      </div>
+      <div class="grid9 mono">
+        <div class="g9-box"><div class="n">01</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+        <div class="g9-box"><div class="n">02</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+        <div class="g9-box"><div class="n">03</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+        <div class="g9-box"><div class="n">04</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+        <div class="g9-box"><div class="n">05</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+        <div class="g9-box"><div class="n">06</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+        <div class="g9-box"><div class="n">07</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+        <div class="g9-box"><div class="n">08</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+        <div class="g9-box"><div class="n">09</div><h5>[HEADING]</h5><p>[DESCRIPTION]</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES (dark) -->
+<section id="casestudies" class="dark">
+  <div class="wrap">
+    <div class="eyebrow" style="opacity:.55;">Selected work</div>
+    <h2 style="color:var(--white);">Case Studies</h2>
+
+    <div class="cs-block">
+      <div class="cs-num mono">01 — WORKFORCE PLANNING</div>
+      <div class="cs-grid split">
+        <div class="ph" style="aspect-ratio:4/3;">[ADD WORKFORCE VS DEMAND CHART]</div>
+        <div>
+          <div class="mono" style="font-size:12px;color:var(--cream-gold);margin-bottom:8px;">THE CHALLENGE</div>
+          <p>[ADD CHALLENGE DESCRIPTION]</p>
+          <div class="mono" style="font-size:12px;color:var(--cream-gold);margin:16px 0 8px;">WHAT I ANALYZED</div>
+          <p>[ADD ANALYSIS DESCRIPTION]</p>
+          <div class="cs-metric">[XX%]</div>
+          <p style="font-size:13px;">Result — [ADD RESULT]</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="cs-block">
+      <div class="cs-num mono">02 — LABOR PRODUCTIVITY</div>
+      <div class="ph" style="aspect-ratio:21/9;margin-bottom:20px;">[ADD PRODUCTIVITY CHART / PHOTO]</div>
+      <div class="flow-lite mono">
+        <span>CURRENT STATE</span><span class="arrow">→</span><span>ANALYSIS</span><span class="arrow">→</span><span>BOTTLENECK</span><span class="arrow">→</span><span>IMPROVEMENT</span><span class="arrow">→</span><span>RESULT [XX hrs]</span>
+      </div>
+    </div>
+
+    <div class="cs-block">
+      <div class="cs-num mono">03 — LINE BALANCING</div>
+      <div class="stations mono">
+        <div class="station">STATION 01</div><div class="station">STATION 02</div><div class="station">STATION 03</div><div class="station">STATION 04</div><div class="station">STATION 05</div>
+      </div>
+      <div class="cs-grid split" style="margin-top:20px;">
+        <div><div class="mono" style="font-size:12px;opacity:.6;">CYCLE TIME [XX s] · TAKT TIME [XX s]</div><p style="margin-top:10px;">Current state — [ADD DESCRIPTION]</p></div>
+        <div class="ph" style="aspect-ratio:4/3;">[ADD FUTURE STATE DIAGRAM]</div>
+      </div>
+    </div>
+
+    <div class="cs-block">
+      <div class="cs-num mono">04 — RCCA</div>
+      <div class="ph" style="aspect-ratio:16/9;margin-bottom:20px;">[ADD FISHBONE / ISHIKAWA DIAGRAM]</div>
+      <div class="flow-lite mono">
+        <span>PROBLEM</span><span class="arrow">→</span><span>5 WHY</span><span class="arrow">→</span><span>ROOT CAUSE</span><span class="arrow">→</span><span>COUNTERMEASURE</span><span class="arrow">→</span><span>RESULT</span>
+      </div>
+    </div>
+
+    <div class="cs-block">
+      <div class="cs-num mono">05 — PROCESS OPTIMIZATION</div>
+      <div class="cs-grid split">
+        <div class="ph" style="aspect-ratio:4/3;">[ADD "BEFORE" PHOTO]</div>
+        <div class="ph" style="aspect-ratio:4/3;">[ADD "AFTER" PHOTO]</div>
+      </div>
+      <p style="margin-top:16px;font-size:13px;">[ADD RESULT DESCRIPTION]</p>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="eyebrow">What I've built</div>
+    <h2>Selected Engineering Projects</h2>
+    <div class="proj-feature">
+      <div class="ph">[ADD FEATURED PROJECT PHOTO]</div>
+      <div>
+        <div class="mono" style="font-size:11px;color:var(--orange);margin-bottom:8px;">FEATURED PROJECT</div>
+        <h3>[ADD PROJECT NAME]</h3>
+        <p>[ADD PROJECT DESCRIPTION, PROBLEM AND APPROACH]</p>
+        <a class="view-link" href="[PROJECT LINK]" target="_blank" rel="noopener">View project →</a>
+      </div>
+    </div>
+    <div class="proj-small">
+      <div class="proj-card">
+        <div class="ph">[ADD PROJECT PHOTO]</div>
+        <h3 style="font-size:20px;">[ADD PROJECT NAME]</h3>
+        <p style="font-size:14px;">[ADD DESCRIPTION] · Tools: [ADD TOOLS]</p>
+        <a class="view-link" href="[PROJECT LINK]" target="_blank" rel="noopener">Case study ↗</a>
+      </div>
+      <div class="proj-card">
+        <div class="ph">[ADD PROJECT PHOTO]</div>
+        <h3 style="font-size:20px;">[ADD PROJECT NAME]</h3>
+        <p style="font-size:14px;">[ADD DESCRIPTION] · Tools: [ADD TOOLS]</p>
+        <a class="view-link" href="[PROJECT LINK]" target="_blank" rel="noopener">Case study ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="wrap">
+    <div class="eyebrow">Credentials</div>
+    <h2>Certifications</h2>
+    <p>Professional credentials supporting my work across industrial engineering, aerospace manufacturing, analytics, and continuous improvement.</p>
+
+    <div class="cert-row">
+      <div class="cert-media"><div class="ph">[ADD CERTIFICATE / CREDENTIAL IMAGE]</div></div>
+      <div class="cert-body">
+        <div class="cert-name">[ADD CERTIFICATION NAME]</div>
+        <div class="cert-org">[ADD ISSUING ORGANIZATION]</div>
+        <div class="cert-year mono">[ADD YEAR]</div>
+        <p class="cert-desc">[ADD 3–4 LINE CERTIFICATION DESCRIPTION]</p>
+        <div class="cert-links mono"><a href="[ADD VERIFICATION URL]" target="_blank" rel="noopener">VERIFY CREDENTIAL ↗</a></div>
+      </div>
+    </div>
+
+    <div class="cert-row flip">
+      <div class="cert-media"><div class="ph">[ADD CERTIFICATE / CREDENTIAL IMAGE]</div></div>
+      <div class="cert-body">
+        <div class="cert-name">[ADD CERTIFICATION NAME]</div>
+        <div class="cert-org">[ADD ISSUING ORGANIZATION]</div>
+        <div class="cert-year mono">[ADD YEAR]</div>
+        <p class="cert-desc">[ADD 3–4 LINE CERTIFICATION DESCRIPTION]</p>
+        <div class="cert-links mono"><a href="[ADD VERIFICATION URL]" target="_blank" rel="noopener">VERIFY CREDENTIAL ↗</a></div>
+      </div>
+    </div>
+
+    <div class="cert-row">
+      <div class="cert-media"><div class="ph">[ADD CERTIFICATE / CREDENTIAL IMAGE]</div></div>
+      <div class="cert-body">
+        <div class="cert-name">[ADD CERTIFICATION NAME]</div>
+        <div class="cert-org">[ADD ISSUING ORGANIZATION]</div>
+        <div class="cert-year mono">[ADD YEAR]</div>
+        <p class="cert-desc">[ADD 3–4 LINE CERTIFICATION DESCRIPTION]</p>
+        <div class="cert-links mono"><a href="[ADD VERIFICATION URL]" target="_blank" rel="noopener">VERIFY CREDENTIAL ↗</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="neutral">
+  <div class="wrap">
+    <div class="eyebrow">Capabilities</div>
+    <h2>Industrial Engineering Capabilities</h2>
+    <p>Select a capability to see what it means and how it's been applied.</p>
+    <div class="capmap" id="capmap">
+      <div class="cap-cluster"><h4>Manufacturing</h4><ul>
+        <li data-what="Reworking a process to remove waste and variation." data-how="[ADD HOW HEMANTH NATARAJA HAS USED THIS]">Process Optimization</li>
+        <li data-what="Aerospace-specific manufacturing operations." data-how="[ADD HOW HEMANTH NATARAJA HAS USED THIS]">Aerospace Manufacturing</li>
+      </ul></div>
+      <div class="cap-cluster"><h4>Productivity</h4><ul>
+        <li data-what="Output per labor hour across a process or line." data-how="[ADD HOW HEMANTH NATARAJA HAS USED THIS]">Labor Productivity</li>
+        <li data-what="Determining how much a line or team can produce." data-how="[ADD HOW HEMANTH NATARAJA HAS USED THIS]">Capacity Analysis</li>
+      </ul></div>
+      <div class="cap-cluster"><h4>Workforce</h4><ul>
+        <li data-what="Matching staffing levels to production demand." data-how="[ADD HOW HEMANTH NATARAJA HAS USED THIS]">Workforce Planning</li>
+        <li data-what="Comparing demand against available capacity." data-how="[ADD HOW HEMANTH NATARAJA HAS USED THIS]">Demand vs Capacity</li>
+      </ul></div>
+      <div class="cap-cluster"><h4>Continuous Improvement</h4><ul>
+        <li data-what="Root Cause Corrective Action investigations." data-how="[ADD HOW HEMANTH NATARAJA HAS USED THIS]">RCCA / 5 Why</li>
+        <li data-what="Locking in a fix so the problem doesn't return." data-how="[ADD HOW HEMANTH NATARAJA HAS USED THIS]">Standardization</li>
+      </ul></div>
+      <div class="cap-cluster"><h4>Analytics</h4><ul>
+        <li data-what="Modeling and analyzing manufacturing data." data-how="[ADD HOW HEMANTH NATARAJA HAS USED THIS]">Excel / Power BI</li>
+      </ul></div>
+      <div class="cap-cluster"><h4>Engineering</h4><ul>
+        <li data-what="Distributing work evenly across stations." data-how="[ADD HOW HEMANTH NATARAJA HAS USED THIS]">Line Balancing</li>
+      </ul></div>
+    </div>
+    <div class="cap-detail" id="capDetail"><div class="k">What it means</div><div id="capWhat"></div><div class="k" style="margin-top:10px;">How Hemanth Nataraja has used it</div><div id="capHow"></div></div>
+  </div>
+</section>
+
+<!-- HOW I WORK -->
+<section id="howiwork" class="neutral">
+  <div class="wrap">
+    <div class="eyebrow">Method</div>
+    <h2>How I Work</h2>
+    <div class="howiwork mono">
+      <div class="hiw-step"><div class="n">01</div><h4>Observe</h4></div>
+      <div class="hiw-step"><div class="n">02</div><h4>Measure</h4></div>
+      <div class="hiw-step"><div class="n">03</div><h4>Understand</h4></div>
+      <div class="hiw-step"><div class="n">04</div><h4>Improve</h4></div>
+      <div class="hiw-step"><div class="n">05</div><h4>Validate</h4></div>
+      <div class="hiw-step"><div class="n">06</div><h4>Sustain</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow">Who I am</div>
+    <h2>I like solving problems you can see on the factory floor.</h2>
+    <div class="about-grid">
+      <div class="ph about-photo">[ADD PHOTO]</div>
+      <p>Hemanth Nataraja is an Industrial Engineer focused on aerospace manufacturing — the systems behind labor productivity, capacity, and workforce planning. His work centers on using data to find the real cause of a production problem, and building countermeasures that hold. [ADD MORE PERSONAL CONTEXT]</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="dark">
+  <div class="wrap">
+    <div class="eyebrow" style="opacity:.55;">Get in touch</div>
+    <h2 style="color:var(--white);">Let's build better systems.</h2>
+    <div class="hero-panel mono" style="margin-top:26px;">
+      <div><span>EMAIL</span><a href="mailto:[EMAIL]">[ADD EMAIL]</a></div>
+      <div><span>LINKEDIN</span><a href="[LINKEDIN URL]" target="_blank" rel="noopener">[ADD LINKEDIN]</a></div>
+      <div><span>PHONE</span><a href="tel:[PHONE]">[ADD PHONE]</a></div>
+      <div><span>LOCATION</span>Wichita, Kansas, USA</div>
+    </div>
+    <div class="cta-row"><a class="cta" href="[ADD RESUME PDF LINK]" target="_blank" rel="noopener">View resume →</a></div>
+  </div>
+</section>
+
+<footer class="dark">
+  <div class="wrap footer-grid mono">
+    <div>
+      <div style="font-family:var(--serif);font-size:16px;">HEMANTH NATARAJA</div>
+      <div style="opacity:.6;">Industrial Engineer — Aerospace · Manufacturing · Continuous Improvement</div>
+    </div>
+    <div>
+      <div class="status">SYSTEM STATUS: ENGINEERING IN PROGRESS</div>
+      <div style="opacity:.6;">© Hemanth Nataraja 2026</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+const header=document.getElementById('siteHeader');
+window.addEventListener('scroll',()=>{header.classList.toggle('scrolled',window.scrollY>60);},{passive:true});
+
+const openMenu=document.getElementById('openMenu'),closeMenu=document.getElementById('closeMenu'),mobileMenu=document.getElementById('mobileMenu');
+openMenu.addEventListener('click',()=>mobileMenu.classList.add('open'));
+closeMenu.addEventListener('click',()=>mobileMenu.classList.remove('open'));
+mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mobileMenu.classList.remove('open')));
+
+const sections=document.querySelectorAll('body > section[id]');
+const navLinks=document.querySelectorAll('nav.desktop a');
+const spy=()=>{
+  let current='';
+  sections.forEach(s=>{ if(window.scrollY+100>=s.offsetTop) current=s.id; });
+  navLinks.forEach(l=>l.classList.toggle('active', l.dataset.sec===current));
+};
+window.addEventListener('scroll',spy,{passive:true});spy();
+
+document.querySelectorAll('.tl-item').forEach(t=>{
+  t.addEventListener('click',()=>{
+    document.querySelectorAll('.tl-item').forEach(x=>x.classList.remove('active'));
+    t.classList.add('active');
+    document.getElementById(t.dataset.goto).scrollIntoView({behavior:'smooth'});
+  });
+});
+
+document.querySelectorAll('.cert-media').forEach(m=>{
+  m.addEventListener('click',()=>{ m.classList.toggle('zoomed'); });
+});
+
+const capDetail=document.getElementById('capDetail'),capWhat=document.getElementById('capWhat'),capHow=document.getElementById('capHow');
+document.querySelectorAll('.cap-cluster li').forEach(li=>{
+  li.addEventListener('click',()=>{
+    capWhat.textContent=li.dataset.what;
+    capHow.textContent=li.dataset.how;
+    capDetail.classList.add('show');
+    capDetail.scrollIntoView({behavior:'smooth',block:'nearest'});
+  });
+});
+</script>
+</body>
+</html>
